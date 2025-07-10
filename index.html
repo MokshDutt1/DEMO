@@ -71,11 +71,12 @@
   let currentIndex = 0;
 
   function playNextVideo() {
-    videoElement.src = videoFiles[currentIndex];
-    videoElement.play();
+  videoElement.src = videoFiles[currentIndex];
+  videoElement.load(); // 👈 Force reloading the new source
+  videoElement.play();
 
-    currentIndex = (currentIndex + 1) % videoFiles.length;
-  }
+  currentIndex = (currentIndex + 1) % videoFiles.length;
+}
 
   // Set up looping
   videoElement.addEventListener("ended", playNextVideo);
